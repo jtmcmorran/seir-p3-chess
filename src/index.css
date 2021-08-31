@@ -3,21 +3,17 @@ body {
   margin: 20px;
   background-color: #ECECEA;
 }
-
 ol, ul {
   padding-left: 30px;
 }
-
 .board-row:after {
   clear: both;
   content: "";
   display: table;
 }
-
 .status {
   margin-bottom: 10px;
 }
-
 .square {
   background: transparent;
   border: 1px solid transparent;
@@ -32,45 +28,35 @@ ol, ul {
   text-align: center;
   width: 48px;
 }
-
 .square:focus {
   outline: none;
 }
-
 .kbd-navigation .square:focus {
   background: #ddd;
 }
-
 .game {
   display: flex;
   flex-direction: row;
 }
-
 .game-info {
   margin-left: 20px;
 }
-
-
 .game-status{
   margin-top: 20px;
   min-height: 50px;
 }
-
 .dark-square{
 background-color: RGB(125, 135, 150);
 }
-
 .light-square{
     background-color: RGB(232, 235, 239);
 }
-
 #player-turn-box{
   width: 32px;
   height: 32px;
   border: 1px solid #000;
   margin-bottom: 10px;
 }
-
 h3{
   margin-bottom: 5px;
 }

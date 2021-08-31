@@ -2,7 +2,7 @@ import Piece from './piece.js';
 
 export default class King extends Piece {
   constructor(player){
-    super(player, (player === 1? "https://upload.wikimedia.org/wikipedia/commons/4/49/Chess_klt60.png" : "https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent#/media/File:Chess_kdt60.png"));
+    super(player, (player === 1? "https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg" : "https://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg"));
   }
   isMovePossible(src, dest){
     return (src - 9 === dest ||

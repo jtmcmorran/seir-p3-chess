@@ -2,7 +2,6 @@ import React from 'react';
 import '../index.css';
 import Board from './board.js';
 import initialiseChessBoard from '../initializer.js';
-
 export default class Game extends React.Component {
   constructor(){
     super();
@@ -14,42 +13,29 @@ export default class Game extends React.Component {
       turn: 'white'
     }
   }
-
   handleClick(i){
     const squares = this.state.squares.slice();
-
     if(this.state.sourceSelection === -1){
-      if(!squares[i] || squares[i].player !== this.state.player){
-        this.setState({status: "Wrong selection. Choose player " + this.state.player + " pieces."});
-        if(squares[i]){
-          delete squares[i].style.backgroundColor;
-        }
-      }
-      else{
-        squares[i].style = {...squares[i].style, backgroundColor: "RGB(111,143,114)"};
+      if(squares[i] && squares[i].player === this.state.player){
         this.setState({
-          status: "Choose destination for the selected piece",
+          status: "Choose destination",
           sourceSelection: i
         });
       }
     }
-
     else if(this.state.sourceSelection > -1){
-      delete squares[this.state.sourceSelection].style.backgroundColor;
       if(squares[i] && squares[i].player === this.state.player){
         this.setState({
-          status: "Wrong selection. Choose valid source and destination again.",
+          status: "Illegal move, try again",
           sourceSelection: -1,
         });
       }
       else{
-
         const squares = this.state.squares.slice();
         const isDestEnemyOccupied = squares[i]? true : false;
         const isMovePossible = squares[this.state.sourceSelection].isMovePossible(this.state.sourceSelection, i, isDestEnemyOccupied);
         const srcToDestPath = squares[this.state.sourceSelection].getPath(this.state.sourceSelection, i);
         const isMoveLegal = this.isMoveLegal(srcToDestPath);
-
         if(isMovePossible && isMoveLegal){
           squares[i] = squares[this.state.sourceSelection];
           squares[this.state.sourceSelection] = null;
@@ -65,15 +51,13 @@ export default class Game extends React.Component {
         }
         else{
           this.setState({
-            status: "Wrong selection. Choose valid source and destination again.",
+            status: "Illegal move, try again",
             sourceSelection: -1,
           });
         }
       }
     }
-
   }
-
   isMoveLegal(srcToDestPath){
     let isLegal = true;
     for(let i = 0; i < srcToDestPath.length; i++){
@@ -84,7 +68,6 @@ export default class Game extends React.Component {
     return isLegal;
   }
   render() {
-
     return (
       <div>
         <div className="game">
@@ -97,11 +80,9 @@ export default class Game extends React.Component {
           <div className="game-info">
             <h3>Turn</h3>
             <div id="player-turn-box" style={{backgroundColor: this.state.turn}}>
-
             </div>
             <div className="game-status">{this.state.status}</div>
             </div>
-
           </div>
         </div>
       );
