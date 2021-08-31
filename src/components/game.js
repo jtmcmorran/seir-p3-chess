@@ -21,7 +21,7 @@ export default class Game extends React.Component {
     if(this.state.sourceSelection === -1){
       if(!squares[i] || squares[i].player !== this.state.player){
         this.setState({status: "Wrong selection. Choose player " + this.state.player + " pieces."});
-        delete squares[i].style.backgroundColor;
+        squares[i]? delete squares[i].style.backgroundColor:null;
       }
       else{
         squares[i].style = {...squares[i].style, backgroundColor: "RGB(111,143,114)"};
@@ -33,7 +33,7 @@ export default class Game extends React.Component {
     }
 
     else if(this.state.sourceSelection > -1){
-    //  delete squares[this.state.sourceSelection].style.backgroundColor;
+      delete squares[this.state.sourceSelection].style.backgroundColor;
       if(squares[i] && squares[i].player === this.state.player){
         this.setState({
           status: "Wrong selection. Choose valid source and destination again.",
