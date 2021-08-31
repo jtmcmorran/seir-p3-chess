@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
+const {hash, register} = require('/controllers/auth')
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -16,7 +16,6 @@ const hash = (password) =>{
   .join('')
 }
 module.exports.hash = hash
-
 const register(req,res)=>{
   const hashedPassword = hash(req.body.password);
   req.body.password = bcrypt.hashSync(hashedPassword,bcrypt.genSaltSync(10))
@@ -32,3 +31,5 @@ const register(req,res)=>{
     res.status.400.json({msg:err.message})
   }
 }
+
+module.exports.register = register
