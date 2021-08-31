@@ -1,7 +1,7 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-  background-color: #ECECEA;
+  background-color:  rgb(20 160 240);
+  margin-left:35%;
+  margin-top:10%;
 }
 ol, ul {
   padding-left: 30px;
