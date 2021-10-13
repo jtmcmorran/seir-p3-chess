@@ -1,5 +1,5 @@
 body {
-  background-color:  rgb(20 160 240);
+  background-color:  rgb(20 160 200);
   margin-left:35%;
   margin-top:10%;
 }
@@ -21,12 +21,12 @@ ol, ul {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 48px;
+  height: 60px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 48px;
+  width: 60px;
 }
 .square:focus {
   outline: none;

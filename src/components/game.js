@@ -1,7 +1,9 @@
 import React from 'react';
 import '../index.css';
 import Board from './board.js';
+import { io } from "socket.io-client";
 import initialiseChessBoard from '../initializer.js';
+const socket = io();
 export default class Game extends React.Component {
   constructor(){
     super();
@@ -48,6 +50,7 @@ export default class Game extends React.Component {
             status: '',
             turn: turn
           });
+          socket.emit('send', this.state);
         }
         else{
           this.setState({
@@ -67,6 +70,13 @@ export default class Game extends React.Component {
     }
     return isLegal;
   }
+  async componentDidMount(){
+    socket.on('receive', board => {
+
+      this.setState(board);
+    });
+  }
+
   render() {
     return (
       <div>
